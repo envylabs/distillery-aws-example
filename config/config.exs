@@ -26,9 +26,8 @@ config :logger, :console,
 
 config :libcluster,
   topologies: [
-    example: [
-      strategy: Cluster.Strategy.Epmd,
-      config: [hosts: []]
+    gossip: [
+      strategy: Cluster.Strategy.Epmd
     ]
   ]
 

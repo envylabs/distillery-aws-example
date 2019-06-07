@@ -3,9 +3,10 @@ defmodule Example.Application do
 
   def start(_type, _args) do
     import Supervisor.Spec
+      topologies = Application.get_env(:libcluster, :topologies)
 
     children = [
-      supervisor(Cluster.Supervisor, [topologies, [name: Example.ClusterSupervisor]]),
+      supervisor(Cluster.Supervisor, [[topologies]]),
       supervisor(Example.Database, []),
       supervisor(ExampleWeb.Endpoint, []),
     ]
