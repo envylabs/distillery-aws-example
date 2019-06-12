@@ -6,8 +6,7 @@ defmodule Example.Todo do
     field :completed, :boolean
 
     timestamps [
-      type: :naive_datetime,
-      autogenerate: {NaiveDateTime, :utc_now, []}
+      type: :naive_datetime_usec
     ]
   end
 
