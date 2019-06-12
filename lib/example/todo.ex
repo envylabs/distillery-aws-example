@@ -26,14 +26,14 @@ defmodule Example.Todo do
   @doc """
   Updates a Todo in the database 
   """
-  def update(params) do
-    result =
-      %__MODULE__{}
-      |> changeset(params)
-      |> Example.Repo.update()
-    case result do
-      {:ok, todo} ->
-        {:ok, to_result(todo)}
+  def update(id, params) do
+    with %__MODULE__{} = todo <- Example.Repo.get(__MODULE__, id),
+         cs <- changeset(todo, params),
+         {:ok, updated} <- Example.Repo.update(cs) do
+      {:ok, to_result(updated)}
+    else
+      nil ->
+        :ok
       {:error, cs} ->
         to_error(cs)
     end
