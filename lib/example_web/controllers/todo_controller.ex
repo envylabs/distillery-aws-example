@@ -4,7 +4,7 @@ defmodule ExampleWeb.TodoController do
   def index(conn, _params) do
     case Example.Todo.all() do
       {:ok, todos} ->
-        render(conn, "index.html", todos: todos)
+        render(conn, "index.html", nodes: Node.list, todos: todos)
       {:error, reason} ->
         conn
         |> put_resp_content_type("text/plain")
