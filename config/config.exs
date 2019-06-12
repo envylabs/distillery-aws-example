@@ -27,7 +27,7 @@ config :logger, :console,
 config :libcluster,
   topologies: [
     gossip: [
-      strategy: Cluster.Strategy.Epmd
+      strategy: Cluster.Strategy.Gossip
     ]
   ]
 
