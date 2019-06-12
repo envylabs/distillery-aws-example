@@ -48,9 +48,11 @@ config :libcluster,
   topologies: [
     example: [
       strategy: ClusterEC2.Strategy.Tags,
-      ec2_tagname: "Name",
-      ec2_tagvalue: "#{app}-#{env}",
-      app_prefix: "distillery_example"
+      config: [
+        ec2_tagname: "Name",
+        ec2_tagvalue: "#{app}-#{env}",
+        app_prefix: "distillery_example"
+      ]
     ]
   ]
 
